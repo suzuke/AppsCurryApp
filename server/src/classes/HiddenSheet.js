@@ -10,19 +10,16 @@ class HiddenSheet
 		this.sheet = spreadsheet.getSheetByName(name);
 		if(!this.sheet)
 		{
-			this.sheet = spreadsheet.insertSheet();
-			this.sheet.setName(name);
+			this.sheet = spreadsheet.insertSheet(name);
 		}
 		this.sheet.hideSheet();	
 		return this;
 	}
 	runFormula(formula, cell_addr)
 	{
-		this.sheet.getRange(cell_addr).setFormula('='+formula);
-		
-		return this.sheet.getRange(cell_addr).getValue();
+		return this.sheet.getRange(cell_addr).setFormula('='+formula).getValue();
 	}
-	runQuery(formula,cell_addr)
+	runQuery(formula, cell_addr)
 	{
 		this.sheet.getRange(cell_addr).setFormula('='+formula);
 		return this.sheet.getDataRange().getValues();	
