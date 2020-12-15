@@ -1,5 +1,5 @@
 
-function doGet() 
+function doGet()
 {
   return HtmlService
       .createTemplateFromFile('index')
@@ -8,13 +8,13 @@ function doGet()
 
 function getRequestApp()
 {
-	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/15KRD5eLNMkOEfsoP-5FQybEnUoqtKGMLbR3ilId9V-I/edit');
+	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/1YHXrad1AtfL8owR9RpSXYp4FVRVFMZm2vVrr7qocHus/edit');
 }
 
 function loadRequests()
 {
 	return getRequestApp().getNewRequests();
-} 
+}
 
 function requestDetails(id)
 {
