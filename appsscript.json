@@ -1,5 +1,5 @@
 {
-  "timeZone": "America/New_York",
+  "timeZone": "Asia/Taipei",
   "dependencies": {
   },
   "webapp": {
@@ -9,5 +9,6 @@
   "oauthScopes": [
   	"https://www.googleapis.com/auth/spreadsheets"
   ],
-  "exceptionLogging": "STACKDRIVER"
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8"
 }
