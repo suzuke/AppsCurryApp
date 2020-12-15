@@ -15,7 +15,7 @@ class QueryBuilder
 	}
 	select()
 	{
-		for (let i = 0; i < arguments.length; i++) 
+		for (let i = 0; i < arguments.length; i++)
 		{
 			this.select_clause += this._col_label(arguments[i])+',';
 		}
@@ -29,7 +29,7 @@ class QueryBuilder
 			cmp ='=';
 		}
 		this._append_where(col_name,cmp, value,'AND');
-		
+
 		return this;
 	}
 	orWhere(col_name,cmp, value)
@@ -71,23 +71,31 @@ class QueryBuilder
 	}
 	getQuery()
 	{
-		return this.getSelectClause()+' '+this.getWhereClause();
+		let qry = ''
+		if (!this.where_clause || this.where_clause.length <= 0)
+		{
+			qry = this.getSelectClause();
+		} else {
+			qry = this.getSelectClause()+' '+this.getWhereClause();
+		}
+		qry = qry.replace(/(^\s+|\s+$)/g, '');
+		return qry;
 	}
 	runQuery()
 	{
 		let qry = this.getQuery();
 		console.log('runQuery qry',qry);
 		let hidden_sheet = createHiddenSheet(this.spreadsheet, '_query_sheet');
-		
+
 		let last_col_label = this.options.column_names.getLastColLabel();
 
 		console.log('runQuery last_col_label',last_col_label);
-		
+
 		let colref = "'"+this.sheet.getName()+"'!"+'A'+':'+last_col_label;
 
 		console.log('runQuery colref',colref);
 
-		let formula = `QUERY(${colref},${JSON.stringify(qry)}, 0)`; 
+		let formula = `QUERY(${colref},${JSON.stringify(qry)}, 0)`;
 
 		console.log('runQuery formula',formula);
 

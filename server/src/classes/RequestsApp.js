@@ -5,11 +5,11 @@ class RequestsApp
 {
 	constructor( spreadsheet_url )
 	{
-		//this.spreadsheet_url = 
+		//this.spreadsheet_url =
 		//'https://docs.google.com/spreadsheets/d/1k-zN8IfrkC34jEXam9KoNXzpYzCp0ro_h9hPFZZ7Fe4/edit';
 
 		this.db = new SpreadsheetDB({
-			source_url: spreadsheet_url, 
+			source_url: spreadsheet_url,
 			column_names: ['id','device_type', 'details', 'status']
 		});
 	}
@@ -33,7 +33,7 @@ class RequestsApp
 	rejectRequest(id)
 	{
 		let res = this.db.update(id, 'status', 'rejected');
-		return this._getJSONResult(res);		
+		return this._getJSONResult(res);
 	}
 	newRequest(req)
 	{
@@ -54,7 +54,7 @@ class RequestsApp
 		}
 		else
 		{
-			return({result:'failed'});	
+			return({result:'failed'});
 		}
 	}
 }
