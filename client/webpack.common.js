@@ -5,10 +5,10 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-	entry: {
-	app: './client/src/main.js'
-	},
-	 module: {
+  entry: {
+    app: './client/src/main.js'
+  },
+  module: {
     rules: [
       {
         test: /\.(scss)$/,
@@ -41,18 +41,22 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
+      },
+      {
+        test: /\.(eot|gif|otf|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: ['file-loader'],
       }
     ]
-  	},
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        },
-        extensions: ['*', '.js', '.vue', '.json']
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
     },
-    plugins: [
-      new VueLoaderPlugin()
-    ]
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 
 
 };
