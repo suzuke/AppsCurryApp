@@ -40,6 +40,11 @@ class BackEndWrapper
 	{
 		return this.real.approvedRequests();
 	}
+	getChallenge()
+	{
+		console.log("BackEndWeapper-getChallenge");
+		return this.real.getChallenge();
+	}
 };
 
 export default BackEndWrapper;

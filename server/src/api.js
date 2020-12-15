@@ -8,7 +8,13 @@ function doGet()
 
 function getRequestApp()
 {
-	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/1YHXrad1AtfL8owR9RpSXYp4FVRVFMZm2vVrr7qocHus/edit');
+	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/1YC5IHdq6C0OawmMzDy8ezXxAkybtcTMSsq9SMCHxCDI/edit');
+}
+
+function getChallenge()
+{
+	console.log("api-getChallenge");
+	return new AppLib.DataBase('https://docs.google.com/spreadsheets/d/1YC5IHdq6C0OawmMzDy8ezXxAkybtcTMSsq9SMCHxCDI/edit').getChallenge();
 }
 
 function loadRequests()

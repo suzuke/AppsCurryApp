@@ -4,7 +4,7 @@ import {createHiddenSheet} from './HiddenSheet.js';
 import ColumnNames from './ColumnNames.js';
 import QueryBuilder from './QueryBuilder.js';
 
-class SpreadsheetDB
+class SpreadsheetDBTable
 {
 	constructor(options)
 	{
@@ -15,7 +15,8 @@ class SpreadsheetDB
 			header_row:1,
 			column_names:null,
 			source_url:null,
-			id_column:'A'
+            id_column:'A',
+            table_name:null,
 		}
 		this.open(options);
 	}
@@ -26,8 +27,15 @@ class SpreadsheetDB
 
 		if(this.options.source_url)
 		{
-			this.spreadsheet = SpreadsheetApp.openByUrl(this.options.source_url);
-			this.sheet = this.spreadsheet.getSheets()[0];
+            this.spreadsheet = SpreadsheetApp.openByUrl(this.options.source_url);
+            if(this.options.table_name)
+            {
+                this.sheet = this.spreadsheet.getSheetByName(this.options.table_name);
+            }
+            else
+            {
+                this.sheet = this.spreadsheet.getSheets()[0];
+            }
 		}
 
 		if(!this.options.column_names)
@@ -150,4 +158,4 @@ export function make_match_formula(needle,col,sheet_name)
 	return formula;
 }
 
-export default SpreadsheetDB;
+export default SpreadsheetDBTable;

@@ -8,7 +8,7 @@ class GASBackEnd
 	}
 	loadRequests()
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -22,7 +22,7 @@ class GASBackEnd
 	}
 	requestDetails(id)
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -36,7 +36,7 @@ class GASBackEnd
 	}
 	approveRequest(id)
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -50,7 +50,7 @@ class GASBackEnd
 	}
 	rejectRequest(id)
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -64,7 +64,7 @@ class GASBackEnd
 	}
 	newRequest(req)
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -78,7 +78,7 @@ class GASBackEnd
 	}
 	approvedRequests()
 	{
-		return new Promise(function(resolve,reject) 
+		return new Promise(function(resolve,reject)
 		{
 			google.script.run.withSuccessHandler(function(res)
 			{
@@ -91,6 +91,21 @@ class GASBackEnd
 		});
 	}
 
+
+	getChallenge(){
+		console.log("GASBackEnd-getChallenge");
+		return new Promise(function(resolve,reject)
+		{
+			google.script.run.withSuccessHandler(function(res)
+			{
+				resolve(res);
+			})
+			.withFailureHandler(function()
+			{
+				reject();
+			}).getChallenge();
+		});
+	}
 }
 
 export default GASBackEnd;
