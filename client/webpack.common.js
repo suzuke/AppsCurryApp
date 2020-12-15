@@ -35,7 +35,7 @@ module.exports = {
           {
             // Loads a SASS/SCSS file and compiles it to CSS
             loader: 'sass-loader'
-          }
+          },
         ]
       },
       {
@@ -43,8 +43,8 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.(eot|gif|otf|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ['file-loader'],
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -52,7 +52,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json', 'scss']
   },
   plugins: [
     new VueLoaderPlugin()
