@@ -13,7 +13,10 @@
                 bw:new BackEndWrapper(),
                 rule:[
                     maker.input('goods_name','goods_name'),
-                    maker.date('created_at','created_at')
+                    maker.date('created_at','created_at'),
+                    maker.switch('switch', 'switch_field', 0).on({
+                        change: ()=>{this.getChallengeSelect();},
+                    })
                 ],
                 option:{
                     onSubmit:function (formData) {
@@ -24,19 +27,19 @@
         },
         mounted:function(){
             this.model = this.fApi.model();
-            this.getChallengeSelect();
         },
         methods: {
             getChallengeSelect()
             {
+                console.time("getChallengeSelect");
                 console.log("FromCreateTest");
-                this.bw.getChallenge().then(function(res)
-                {
-                    console.log(res);
+                this.bw.getChallenge().then(
+                function(res){
+                    //console.log(res);
+                    console.timeEnd("getChallengeSelect");
                 }.bind(this),
-                function(err)
-                {
-                //this.showError();
+                function(err){
+                    console.log(err);
                 }.bind(this));
             }
         }

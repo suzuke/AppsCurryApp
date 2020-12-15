@@ -13,8 +13,8 @@ function getRequestApp()
 
 function getChallenge()
 {
-	console.log("api-getChallenge");
-	return new AppLib.DataBase('https://docs.google.com/spreadsheets/d/1YC5IHdq6C0OawmMzDy8ezXxAkybtcTMSsq9SMCHxCDI/edit').getChallenge();
+	let db = new AppLib.DataBase('https://docs.google.com/spreadsheets/d/1YC5IHdq6C0OawmMzDy8ezXxAkybtcTMSsq9SMCHxCDI/edit')
+	return db.getChallenge();
 }
 
 function loadRequests()
